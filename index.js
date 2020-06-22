@@ -36,8 +36,8 @@ function mergeLinkedLists(listArray){
             console.log("hello");
         listArray[indexOfMinimumValue]=undefined;
         }
-        let newNode={value:minimumValue};
-        pointerResult.next=newNode;
+
+        pointerResult.next={value:minimumValue};
         pointerResult=pointerResult.next;
     }
  return JSON.stringify(listResult.next);
@@ -47,27 +47,23 @@ function anyPointerIsNotUndefined(listArray){
    return listArray.some((e)=>e!==undefined);
 }
 function findMinimumValueNode(listArray){
-    console.log(listArray);
-    let valueArray=[];
+    let minValue;
+    let indexOfMinValue;
+    let start=false;
     for(let i=0;i<listArray.length;i++){
-        if(listArray[i]!==undefined){
-            valueArray.push(listArray[i].value);
+        if(listArray[i]!==undefined && !start){
+            minValue=listArray[i].value;
+            indexOfMinValue=i;
+            start=true;
         }
-        else if(listArray[i]===undefined){
-            valueArray.push(undefined);
-        }
-    }
-    let minimumValue=findMinimumValue(valueArray);
-    let indexOfMinimumValue=valueArray.indexOf(minimumValue);
-    return [minimumValue,indexOfMinimumValue];
-}
-function findMinimumValue(valueArray){
-    let temp=[];
-    for(let i=0;i<valueArray.length;i++){
-        if(valueArray[i]!==undefined){
-            temp.push(valueArray[i]);
+        if(listArray[i]!==undefined && start){
+            if(listArray[i].value<minValue){
+                minValue=listArray[i].value;
+                indexOfMinValue=i;
+            }
         }
     }
-    return Math.min(...temp);
+    return [minValue,indexOfMinValue];
 }
+
 console.log(mergeLinkedLists([listA, listB,listD]));
