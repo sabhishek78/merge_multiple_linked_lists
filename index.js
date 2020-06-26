@@ -33,8 +33,7 @@ function mergeLinkedLists(listArray){
             listArray[indexOfMinimumValue]=listArray[indexOfMinimumValue].next ;
         }
         else{
-            console.log("hello");
-        listArray[indexOfMinimumValue]=undefined;
+            listArray[indexOfMinimumValue]=undefined;
         }
 
         pointerResult.next={value:minimumValue};
