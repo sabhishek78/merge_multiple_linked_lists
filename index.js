@@ -22,7 +22,7 @@ let listB = {
 };
 
 
-let listD = { value: 6 };
+let listC = { value: 6 };
 
 function mergeLinkedLists(listArray){
     let listResult = { val : -1, next : null };
@@ -35,7 +35,6 @@ function mergeLinkedLists(listArray){
         else{
             listArray[indexOfMinimumValue]=undefined;
         }
-
         pointerResult.next={value:minimumValue};
         pointerResult=pointerResult.next;
     }
@@ -48,14 +47,15 @@ function anyPointerIsNotUndefined(listArray){
 function findMinimumValueNode(listArray){
     let minValue;
     let indexOfMinValue;
-    let start=false;
-    for(let i=0;i<listArray.length;i++){
-        if(listArray[i]!==undefined && !start){
-            minValue=listArray[i].value;
-            indexOfMinValue=i;
-            start=true;
+    for(let i=0;i<listArray.length;i++) {
+        if (listArray[i] !== undefined) {
+            minValue = listArray[i].value;
+            indexOfMinValue = i;
+
         }
-        if(listArray[i]!==undefined && start){
+    }
+    for(let i=0;i<listArray.length;i++){
+        if(listArray[i]!==undefined){
             if(listArray[i].value<minValue){
                 minValue=listArray[i].value;
                 indexOfMinValue=i;
@@ -65,4 +65,4 @@ function findMinimumValueNode(listArray){
     return [minValue,indexOfMinValue];
 }
 
-console.log(mergeLinkedLists([listA, listB,listD]));
+console.log(mergeLinkedLists([listA, listB,listC]));
