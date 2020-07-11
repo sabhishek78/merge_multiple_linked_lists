@@ -39,7 +39,6 @@ function mergeLinkedLists(listArray){
         pointerResult=pointerResult.next;
     }
  return JSON.stringify(listResult.next);
-    
 }
 function anyPointerIsNotUndefined(listArray){
    return listArray.some((e)=>e!==undefined);
